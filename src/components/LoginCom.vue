@@ -30,7 +30,7 @@ export default {
         return {
             email: "",
             password: "",
-        };
+        }
     },
     methods: {
         submit(e) {
@@ -46,7 +46,7 @@ export default {
             .then( function( response ){
                 localStorage.setItem('token', response.data.data.user.token);
                 localStorage.setItem('user_id', response.data.data.user.user_id);
-                this.$router.push({name: 'blog'});
+                this.$router.push("/blog");
             }.bind(this))
             .catch( function( error ){
 

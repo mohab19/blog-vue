@@ -48,6 +48,7 @@ export default {
     methods: {
         logOutFun: function () {
             localStorage.removeItem("token");
+            localStorage.removeItem("user_id");
             this.$router.push("/login");
         },
     },
