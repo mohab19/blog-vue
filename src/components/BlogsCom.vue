@@ -1,11 +1,11 @@
 <template>
     <div class="row">
-        <div class="offset-md-3 col-md-6">
-            <div :v-for="blog in allBlog" class="item bg-info text-white text-center rounded-4 p-3">
-                <h4> {{blog.title}} </h4>
-                <p> {{blog.description}} </p>
-                <span class="d-block text-start">publish at</span>
-                <h5 class="h6 text-start">publish By</h5>
+        <div class="offset-md-2 col-md-8">
+            <div v-for="(item, index) in allBlogs" :key="index" class="item p-3">
+                <h4> {{item.title}} </h4>
+                <p> {{item.description}} </p>
+                <h6 class="d-block text-start">Publish At: {{item.publication_date}}</h6>
+                <h6 class="h6 text-start">Publish By: {{item.user}}</h6>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            allBlog:[]
+            allBlogs:[]
         };
     },
     methods: {
@@ -30,8 +30,8 @@ export default {
                 }
             })
             .then((response) => {
-                console.log(response.data);
-                this.allBlog = response.data;
+                console.log(response.data.data[0]);
+                this.allBlogs = response.data.data[0];
             }).catch((error) => {
                 console.log(error);
             });
@@ -44,4 +44,17 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+    .item {
+        margin-bottom: 50px;
+    }
+    .item h4 {
+        border-left: 6px solid red;
+        padding: 5px 25px;
+        margin-bottom: 20px;
+    }
+    .item p,
+    .item h6 {
+        padding-left: 31px;
+    }
+</style>

@@ -29,6 +29,7 @@ export default {
                 body: JSON.stringify({
                     title: this.title,
                     description: this.description,
+                    user_id: localStorage.getItem('user_id')
                 }),
             })
             .then((res) => res.json())
